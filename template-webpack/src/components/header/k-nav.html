@@ -1,0 +1,52 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="left" on:click="_emitClick('left')">
+      <slot name="left"></slot>
+    </div>
+    <div class="center" on:click="_emitClick('center')">
+      <slot name="center"></slot>
+    </div>
+    <div class="right" on:click="_emitClick('right')">
+      <slot name="right"></slot>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .container {
+    display: flex;
+  }
+  .navbar {
+    color: blue;
+    background: white;
+  }
+  .left {
+    flex: 1;
+  }
+  .center {
+    flex: 1;
+  }
+  /* .navbar .right {
+    
+  } */
+</style>
+
+<script type="text/javascript">
+  export default {
+    tag: 'k-nav',
+    data () {
+      return {};
+    },
+    methods: {
+      _emitClick (clickedSlot) {
+        console.log('clickedSlot:', clickedSlot);
+        this.dispatchEvent(new CustomEvent('slotClicked', {
+          detail: clickedSlot,
+          bubbles: true,
+          cancelable: true,
+          composed: true // makes the event jump shadow DOM boundary
+        }));
+      }
+    }
+  }
+</script>

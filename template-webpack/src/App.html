@@ -1,0 +1,40 @@
+<KNav >
+  <span slot="left">My left span</span>
+  <span slot="center">My right span</span>
+  <span slot="right">My name: {name}</span>
+</KNav>
+<h1>Hello {name}!</h1>
+
+<input id="myName" on:keyup="onInputChange()" />
+
+<style>
+	h1 {
+		color: blue;
+	}
+</style>
+
+<script type="text/javascript">
+	import KNav from './components/header/k-nav.html';
+	export default {
+    data () {
+      return {
+        name: 'zack'
+      };
+    },
+    methods: {
+      onInputChange: function (event) {
+        console.log('htmlElement:', event);
+        // console.log('value:', htmlElement.value);
+        let inputElem = document.getElementById('myName');
+        console.log('inputElem:', inputElem.value);
+        this.set({name: inputElem.value});
+      }
+    },
+    computed: {
+      getMyName: ({name}) => name
+    },
+		components: {
+			KNav
+		}
+	};
+</script>

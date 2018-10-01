@@ -1,5 +1,5 @@
 // import App from './App.html';
-import Nav from './components/header/k-nav.html';
+import Nav from './components/nav/k-nav.html';
 
 // let app = new App({
 //   target: document.body
